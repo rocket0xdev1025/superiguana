@@ -1,13 +1,13 @@
 /* =========================================================
    SUPER IGUANA ($SI) — CONFIG
    Fill these in at launch. Everything else updates itself.
-   - CA: paste the 0x... Base contract (42 chars). 'TBA' keeps
+   - CA: paste the 0x... Base contract (42 chars). '0xfe8001877721d8f8cf070cee3c042b6a01b0e68f' keeps
      Buy/Chart pointing at placeholders and shows the chart overlay.
    - X / TG: full URLs, e.g. 'https://x.com/superiguana' and
      'https://t.me/superiguana'. Empty string = shows "Soon" (disabled).
    ========================================================= */
 const CONFIG = {
-  CA: 'TBA',
+  CA: '0xfe8001877721d8f8cf070cee3c042b6a01b0e68f',
   X: 'https://x.com/superiguanabase',
   TG: 'https://t.me/superiguanabase',
   CHAIN: 'base'
@@ -27,7 +27,7 @@ const CONFIG = {
   const hasGSAP = !!(window.gsap && window.ScrollTrigger);
 
   /* ---------- links ---------- */
-  const caOrTBA = validCA ? CONFIG.CA : 'TBA';
+  const caOrTBA = validCA ? CONFIG.CA : '0xfe8001877721d8f8cf070cee3c042b6a01b0e68f';
   const LINKS = {
     buy: `https://app.uniswap.org/swap?chain=${CONFIG.CHAIN}&outputCurrency=${caOrTBA}`,
     chart: `https://dexscreener.com/${CONFIG.CHAIN}/${caOrTBA}`,
@@ -43,7 +43,7 @@ const CONFIG = {
       a.addEventListener('click', e => { e.preventDefault(); toast('Socials dropping soon'); });
     }
   });
-  $$('[data-ca]').forEach(el => el.textContent = validCA ? CONFIG.CA : 'TBA — not launched yet');
+  $$('[data-ca]').forEach(el => el.textContent = validCA ? CONFIG.CA : '0xfe8001877721d8f8cf070cee3c042b6a01b0e68f — not launched yet');
 
   /* ---------- toast + copy ---------- */
   const toastEl = $('#toast'); let tt;
@@ -53,7 +53,7 @@ const CONFIG = {
     try { const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;left:-9999px;top:0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch (e) { return false; }
   }
   $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
-    if (!validCA) { toast('CA is TBA — only trust official channels'); return; }
+    if (!validCA) { toast('CA is 0xfe8001877721d8f8cf070cee3c042b6a01b0e68f — only trust official channels'); return; }
     const ok = await copyText(CONFIG.CA);
     toast(ok ? 'CA copied. Cold blood, hot bags.' : 'Copy failed — select the address manually');
   }));
